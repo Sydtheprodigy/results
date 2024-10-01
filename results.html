@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Template</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;700&family=Public+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Public Sans', sans-serif;
+            line-height: 1.6;
+            background-color: #d1d1d1; /* Fallback for older browsers */
+        }
+
+        /* Header styling */
+        header {
+            background: #d1d1d1; /* Red gradient */
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 35px; /* Space between the links */
+            color: #333;
+            text-decoration: none;
+            padding-right: 15px;
+
+        }
+
+        /* Main content styling */
+        main {
+            padding: 20px;
+            min-height: 80vh; /* Minimum height to fill most of the screen */
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        /* Image styling */
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: 600px;
+        }
+
+        /* Circle overlay */
+        .circle-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 590px; /* Adjust size of the circle */
+            height: 590px; /* Adjust size of the circle */
+            background-color: #d1d1d1; /* White circle background */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Circle text */
+        .circle-text {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: #333; /* Adjust text color */
+           letter-spacing: 10px;
+        }
+
+        .circle-text span {
+            display: block;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #d1d1d1;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Link styling */
+        a {
+            color:#333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Heading 1 styling */
+        h1 {
+            font-family: "Instrument Serif";
+            font-size: 160px;
+            margin-bottom: 20px;
+            color: #333; /* Adjust heading color */
+        }
+
+        /* about section ---------------- */
+
+        .about-section {
+    display: flex;
+    justify-content: space-between; /* Creates space between the two columns */
+    gap: 20px; /* Optional: Adds space between the columns */
+    padding: 80px 20px;
+}
+
+.about-left, .about-right {
+    flex: 1; /* Makes both columns take equal space */
+}
+
+.about-left h2, .about-right h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #333; /* Adjust heading color */
+
+}
+
+.about-left p, .about-right p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Responsive Styling for Smaller Screens */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column; /* Stack the columns on smaller screens */
+        gap: 20px; /* Reduce gap for smaller screens */
+    }
+
+    .about-left, .about-right {
+        width: 100%; /* Make each section take the full width */
+    }
+}
+
+
+/* Services Section Styling */
+.services-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px; /* Space between image and text */
+    padding: 100px 20px; /* Adjust padding as needed */
+}
+
+.services-left {
+    flex: 1;
+}
+
+.services-left img {
+    width: 100%; /* Ensure image takes up the available space */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 500px; /* Optional: Limit the max width of the image */
+}
+
+.services-right {
+    flex: 1;
+}
+
+.services-right h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333; /* Adjust heading color */
+}
+
+.services-right p {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Responsive Styling for Smaller Screens */
+@media (max-width: 768px) {
+    .services-section {
+        flex-direction: column; /* Stack the image and text */
+        gap: 20px;
+        padding: 40px 10px;
+    }
+
+    .services-left img {
+        max-width: 100%; /* Ensure image takes up the full width on smaller screens */
+    }
+
+    .services-right {
+        width: 100%; /* Make sure the text takes full width */
+    }
+}
+
+/* Oval Button Styling */
+.oval-button {
+    display: inline-block;
+    padding: 15px 40px; /* Controls the height and width */
+    border: 2px solid #333; /* Border around the button */
+    border-radius: 50px; /* Creates the oval shape */
+    background-color: transparent; /* Transparent background */
+    color: #333; /* Text color */
+    font-family: 'Public Sans', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none; /* Removes underline */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    margin-top: 20px; /* Space between the button and content above */
+}
+
+/* Hover effect for the button */
+.oval-button:hover {
+    background-color: #333; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+    text-decoration: none;
+}
+
+/* Conveyor Container Styling */
+.conveyor-container {
+    width: 100%; /* Full width of the page */
+    overflow: hidden; /* Hide the text when it's outside the container */
+    background-color: #d1d1d1; /* Background color */
+    padding: 20px 0; /* Padding for top and bottom space */
+
+}
+
+/* Conveyor Text Styling */
+.conveyor-text {
+    display: inline-flex; /* Aligns the text side by side in a row */
+    animation: conveyor-animation 40s linear infinite; /* Infinite animation */
+    white-space: nowrap;
+}
+
+.conveyor-text span {
+    font-family: 'Instrument Serif', serif;
+    font-size: 150px;
+    margin-right: 0; /* Space between each instance of the text */
+    padding-right: 50px;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    color: #333; /* Text color */
+}
+
+/* Keyframes for the Conveyor Animation */
+@keyframes conveyor-animation {
+    0% {
+        transform: translateX(0); /* Start outside the right edge */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to outside the left edge */
+    }
+}
+
+
+/* Container Styling */
+.faq-container {
+    display: flex; /* Aligns the title and the content side by side */
+    justify-content: space-between; /* Creates space between the two sides */
+    padding: 20px;
+    background-color: #d1d1d1;
+}
+
+/* Left Side: Title Styling */
+.faq-title {
+    width: 30%; /* Adjust width to your preference */
+}
+
+.faq-title h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    color: #333;
+}
+
+/* Right Side: FAQ Content Styling */
+.faq-content {
+    width: 65%; /* Adjust width to your preference */
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background-color: #d1d1d1;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #333;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #d1d1d1;
+}
+
+.faq-answer {
+    display: none; /* Hide the answer by default */
+    padding: 10px;
+    background-color: #d1d1d1;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.faq-answer p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="client-name">Brian Greaves</div>
+        <div class="header-links">
+            <a href="#pricing">Pricing</a>
+            <a href="#schedule">Schedule</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Restorative Healing</h1>
+        <div class="image-container">
+            <img src="images/results.png" alt="Background Image">
+            <div class="circle-overlay">
+                <div class="circle-text">
+                    <span>Results Muscle Therapy</span>
+                </div>
+            </div>
+        </div>
+        <section class="about-section">
+            <div class="about-left">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-right">
+                <p>I am a registered massage therapist (RMT), with an advanced neuromuscular certification with the California massage therapy council. As a Neuromuscular Therapist, goals of care focus on improving mobility and restoring health.  
+                    This is a highly specialized form of manual therapy that corrects the pain messages to the brain and dysfunction of the muscles. This is done by treating trigger points, muscle adhesions and fascial release. My sessions correct fascia, and reduce trigger points by using manual manipulation, stretching and compression techniques with range of motion. 
+                    </p>
+            </div>
+        </section>
+
+        <h1 style="font-size: 120px; letter-spacing: 3px;">Tigger Point Therapy, Myofascial Release, Pain Management and more.</h1>
+
+        <section class="services-section">
+            <div class="services-left">
+                <img src="images/hand.jpg" alt="image">
+            </div>
+            <div class="services-right">
+                <h2 style="font-size: 65px;">My Services</h2>
+                <p style="font-weight: bold;">Sports Massage</p>
+                <p>A sports massage focuses on enhancing circulation, 
+                    increasing tissue elasticity and reducing muscle tension. 
+                    Sports massage is also used to help relieve tight muscles.
+                     Muscle tightness can limit flexibility, increase pain and cause future injuries. 
+                     Sports massage helps release muscle tightness.</p>
+                <br>
+                <p style="font-weight: bold;">Therapeutic Massage</p>
+                <p>Therapeutic massage is the manipulation of the soft tissue of whole body areas to bring 
+                    about generalized improvements in health, such as relaxation or improved sleep, 
+                    or specific physical benefits, such as relief of muscular aches and pains. ​</p>
+                <br>
+                <p style="font-weight: bold;">The Method</p>
+                <p>Combination of all modalities, bringing you a tailored treatment to assist with long term healing and development. </p>
+                <br>
+
+                <!-- oval button -->
+                <a href="#schedule" class="oval-button">Schedule a Session</a>
+            </div>
+        </section>
+
+        <!-- Rotating Text Section -->
+<div class="conveyor-container">
+    <div class="conveyor-text">
+        <span>Healing is for Everyone</span>
+        <span>Healing is for Everyone</span>
+        <span>Healing is for Everyone</span>
+        <span>Healing is for Everyone</span>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="faq-container">
+    <!-- Left Side: Title -->
+    <div class="faq-title">
+        <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <!-- Right Side: Questions and Answers -->
+    <div class="faq-content">
+        <div class="faq-item">
+            <button class="faq-question">What services do you offer?</button>
+            <div class="faq-answer">
+                <p>We offer a variety of healing and wellness services including massage therapy, physical rehabilitation, and personalized wellness plans.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How can I schedule an appointment?</button>
+            <div class="faq-answer">
+                <p>You can schedule an appointment through our online booking system or by calling our office directly.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you offer discounts for packages?</button>
+            <div class="faq-answer">
+                <p>Yes, we offer discounts on bulk session packages. Contact us for more information on pricing and options.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+<script>
+
+
+// Get all the FAQ questions
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach((question) => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        
+        // Toggle the display of the answer
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+        } else {
+            answer.style.display = "block";
+        }
+    });
+});
+
+
+
+
+</script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Results Muscle Therapy | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>
